@@ -6,16 +6,16 @@ mongoose.connect("mongodb://localhost:27017/n22")
         console.log("Connected to MongoDB");
     })
 
-const userSchema = new mongoose.Schema({
 
+const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     age: Number,
-
 })
 
 
-const userModel = mongoose.model("user", userSchema)
+const userModel = mongoose.model('user', userSchema);
 
 
-module.exports = userModel
+
+module.exports = userModel;
