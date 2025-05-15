@@ -7,10 +7,10 @@ const postSchema = new mongoose.Schema({
     likeCount: {
         type: Number,
         default: 0
-    },
+    }
 })
 
 const postModel = mongoose.model("post", postSchema)
 
 
-module.exports = postModel
+module.exports = postModel  
