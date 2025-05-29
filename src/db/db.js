@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 
 
 function connectDB() {
+
     mongoose.connect("mongodb://localhost:27017/n22")
         .then(() => {
-            console.log("DB connected")
+            console.log("Connected to MongoDB");
         })
         .catch((err) => {
-            console.log("DB not connected")
+            console.error("Error connecting to MongoDB:", err);
         })
 }
 
-module.exports = connectDB; // connectDB ko export kiya
+module.exports = connectDB;
