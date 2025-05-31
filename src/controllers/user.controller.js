@@ -1,10 +1,34 @@
 const userModel = require("../models/user.model")
+// Import the built-in 'crypto' module
+const crypto = require('crypto');
+
+/**
+ * Hashes the input data using SHA-256 algorithm.
+ * 
+ * @param {string} data - The data to hash.
+ * @returns {string} - The resulting hash in hexadecimal format.
+ */
+function hashData(data) {
+    if (typeof data !== 'string') {
+        throw new Error('Input data must be a string');
+    }
+
+    // Create a SHA-256 hash instance and update it with the data
+    const hash = crypto.createHash('sha256').update(data).digest('hex');
+
+    return hash;
+}
 
 
 async function register(req, res) {
+
+
+    const hash = hashData(req.body.password)
+
+
     const user = await userModel.create({
         username: req.body.username,
-        password: req.body.password
+        password: hash
     })
 
     res.status(201).json({
@@ -26,7 +50,9 @@ async function login(req, res) {
         })
     }
 
-    if (user.password !== password) {
+    const hash = hashData(password)
+
+    if (user.password !== hash) {
         return res.status(401).json({
             message: "Invalid password"
         })
