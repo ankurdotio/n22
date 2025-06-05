@@ -1,0 +1,41 @@
+.register-section {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+
+
+    .middle,
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    input {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid black;
+        outline: none;
+    }
+
+    input[type="submit"] {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    p{
+        opacity: 0.7;
+    }
+
+}
