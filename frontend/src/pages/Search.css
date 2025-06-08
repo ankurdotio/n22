@@ -1,0 +1,93 @@
+/* Search.css - Styling for the search interface */
+.search-section {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 120px; /* Make space for navigation */
+}
+
+.search-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.search-header h1 {
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.search-bar {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #666;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-content {
+  margin-top: 30px;
+  text-align: center;
+  color: #666;
+}
+
+/* Song list styling */
+.song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.song-item:hover {
+  background-color: #f0f0f0;
+}
+
+.song-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.song-details {
+  margin-left: 15px;
+  text-align: left;
+}
+
+.song-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.song-artist {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}

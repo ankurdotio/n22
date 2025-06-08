@@ -1,0 +1,29 @@
+.navigation {
+    position: fixed;
+    bottom: 0px; /* Position above the now-playing bar */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #888;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: #333;
+}
+
+.nav-item svg {
+    margin-bottom: 5px;
+}
