@@ -10,13 +10,90 @@
 
 .upload-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  gap: 15px;
+}
+
+.back-button {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.upload-header h1 {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .upload-content {
   margin-top: 30px;
   text-align: center;
   color: #666;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.upload-form input[type="text"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.upload-form input[type="text"]:focus {
+  border-color: #666;
+}
+
+.upload-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.upload-button {
+  flex: 1;
+  padding: 12px 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.upload-button:hover {
+  background-color: #f8f8f8;
+  border-color: #999;
+}
+
+.submit-button {
+  margin-top: 20px;
+  padding: 14px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #333;
 }
