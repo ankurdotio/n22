@@ -27,3 +27,42 @@ export async function upload(req,res) {
     })
     
 }
+
+export async function getSongs(req,res) {
+    const songs = await songModel.find()
+
+    res.status(200).json({
+        message:"songs fetched successfully",
+        songs:songs
+    })
+}
+
+export async function getSongById(req,res){
+    const songId =req.params.mama;
+
+
+    const song =await songModel.findOne({
+        _id: songId
+    })
+
+    res.status(200).json({
+        message: "Song fetched successfully",
+        song
+    })
+}
+
+export async function searchSong(req,res){
+    const text = req.query.text; // test
+
+    const songs = await songModel.find({
+        title:{
+            $regex: text,
+            $options: 'i' // case insensitive
+        }
+    })
+
+    res.status(200).json({
+        message: "Songs fetched successfully",
+        songs: songs
+    })
+}
