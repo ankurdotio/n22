@@ -2,7 +2,9 @@ import express from 'express';
 import { upload,getSongs,getSongById ,searchSong} from '../controllers/song.controller.js';
 import multer from 'multer';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../controllers/auth.controller.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 const storage = multer.memoryStorage();
@@ -22,7 +24,7 @@ router.use((req,res,next)=>{
     }
 
     try{
-        const decoded = jwt.verify(token,JWT_SECRET)
+        const decoded = jwt.verify(token,process.env.JWT_SECRET)
         next()
     }catch(err){
         return res.status(401).json({

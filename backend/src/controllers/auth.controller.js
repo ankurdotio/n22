@@ -1,9 +1,9 @@
 import userModel from "../models/user.model.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
+import dotenv from "dotenv"
 
-
-export const JWT_SECRET = "dfb828bb2bf78502b2c49308097db6cd7ad00d8edf2299ede56b85199ea9397d"
+dotenv.config()
 
 
 export async function registerUser(req, res) {
@@ -27,7 +27,7 @@ export async function registerUser(req, res) {
 
     const token = jwt.sign(
         { id: user._id },
-        JWT_SECRET,
+        process.env.JWT_SECRET,
         { expiresIn: "1d" }
     )
 
@@ -66,7 +66,7 @@ export async function loginUser(req, res) {
 
     const token = jwt.sign(
         { id: user._id },
-        JWT_SECRET,
+        process.env.JWT_SECRET,
         { expiresIn: "1d" }
     )
 

@@ -12,7 +12,7 @@ var imagekit = new ImageKit({
 });
 
 
-export function uploadFile(file){
+export function uploadFile(file, fileName) {
     return new Promise((resolve, reject) => {
         imagekit.upload({
             file: file,

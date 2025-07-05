@@ -52,7 +52,7 @@ export async function getSongById(req,res){
 }
 
 export async function searchSong(req,res){
-    const text = req.query.text; // test
+    const text = req.query.text; // tujhe bhule
 
     const songs = await songModel.find({
         title:{
