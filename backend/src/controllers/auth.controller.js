@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 
-const JWT_SECRET = "dfb828bb2bf78502b2c49308097db6cd7ad00d8edf2299ede56b85199ea9397d"
+export const JWT_SECRET = "dfb828bb2bf78502b2c49308097db6cd7ad00d8edf2299ede56b85199ea9397d"
 
 
 export async function registerUser(req, res) {
@@ -30,6 +30,8 @@ export async function registerUser(req, res) {
         JWT_SECRET,
         { expiresIn: "1d" }
     )
+
+    res.cookie("token", token)
 
     res.status(201).json({
         message: "User registered successfully",
@@ -68,6 +70,9 @@ export async function loginUser(req, res) {
         { expiresIn: "1d" }
     )
 
+
+    res.cookie("token",token)
+    
     res.status(200).json(
         {
             message: "User logged in successfully",
