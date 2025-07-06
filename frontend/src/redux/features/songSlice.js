@@ -93,11 +93,17 @@ export const songSlice = createSlice({
     },
     addSong: (state, action) => {
       state.songs.push(action.payload);
+    },
+    setSongs : (state, action) => {
+      state.songs = action.payload;
+    },
+    setFilteredSongs: (state, action) => {
+      state.filteredSongs = action.payload;
     }
   },
 });
 
-export const { setCurrentSong, togglePlayPause, searchSongs, addSong } = songSlice.actions;
+export const { setCurrentSong, togglePlayPause, searchSongs, addSong, setSongs,setFilteredSongs } = songSlice.actions;
 
 export const selectSongs = (state) => state.songs.songs;
 export const selectCurrentSong = (state) => state.songs.currentSong;

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './Home.css'
 import Navigation from '../components/Navigation'
 import NowPlaying from '../components/NowPlaying'
-import { setCurrentSong, togglePlayPause, selectSongs, selectCurrentSong, selectIsPlaying } from '../redux/features/songSlice'
-import { Link } from 'react-router-dom'
+import { setCurrentSong, togglePlayPause, selectSongs, selectCurrentSong, selectIsPlaying, setSongs } from '../redux/features/songSlice'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -12,9 +13,24 @@ const Home = () => {
     const currentSong = useSelector(selectCurrentSong);
     const isPlaying = useSelector(selectIsPlaying);
 
+
+
     const handlePlaySong = (song) => {
         dispatch(setCurrentSong(song));
     };
+
+    useEffect(()=>{
+
+        axios.get("http://localhost:3000/songs/get-songs",{
+            withCredentials:true
+        })
+        .then(response=>{
+            console.log(response.data)
+            dispatch(setSongs(response.data.songs))
+        })
+        
+    },[])
+    
 
     return (
         <section className="home-section">
@@ -32,15 +48,15 @@ const Home = () => {
             {/* Song list */}
             <div className="song-list">
                 {songs.map(song => (
-                    <div 
-                        key={song.id} 
-                        className="song-item" 
+                    <div
+                        key={song._id}
+                        className="song-item"
                         onClick={() => handlePlaySong(song)}
                     >
-                        <img 
-                            src={song.image} 
-                            alt={song.title} 
-                            className="song-image" 
+                        <img
+                            src={song.poster}
+                            alt={song.title}
+                            className="song-image"
                         />
                         <div className="song-details">
                             <div className="song-title">{song.title}</div>
@@ -51,10 +67,10 @@ const Home = () => {
             </div>
 
             {/* Now Playing bar at the bottom */}
-            <NowPlaying 
-                currentSong={currentSong} 
-                isPlaying={isPlaying} 
-                togglePlayPause={() => dispatch(togglePlayPause())} 
+            <NowPlaying
+                currentSong={currentSong}
+                isPlaying={isPlaying}
+                togglePlayPause={() => dispatch(togglePlayPause())}
             />
 
             {/* Navigation bar */}

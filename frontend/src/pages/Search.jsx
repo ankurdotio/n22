@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Navigation from '../components/Navigation'
 import './Search.css'
 import NowPlaying from '../components/NowPlaying'
-import { searchSongs, setCurrentSong, togglePlayPause, selectFilteredSongs, selectCurrentSong, selectIsPlaying } from '../redux/features/songSlice'
+import { setFilteredSongs, setCurrentSong, togglePlayPause, selectFilteredSongs, selectCurrentSong, selectIsPlaying } from '../redux/features/songSlice'
+import axios from 'axios'
 
 const Search = () => {
     const dispatch = useDispatch();
@@ -12,10 +13,19 @@ const Search = () => {
     const isPlaying = useSelector(selectIsPlaying);
     const [searchQuery, setSearchQuery] = useState('');
 
+
     const handleSearch = (e) => {
         const query = e.target.value;
+
+        console.log(query)
+        axios.get(`http://localhost:3000/songs/search-songs?text=${query}`,{
+            withCredentials: true
+        })
+        .then(response => {
+            console.log(response.data)
+            dispatch(setFilteredSongs(response.data.songs));
+        })
         setSearchQuery(query);
-        dispatch(searchSongs(query));
     };
 
     const handlePlaySong = (song) => {
@@ -41,12 +51,12 @@ const Search = () => {
                     <div className="song-list">
                         {filteredSongs.map(song => (
                             <div 
-                                key={song.id} 
+                                key={song._id} 
                                 className="song-item" 
                                 onClick={() => handlePlaySong(song)}
                             >
                                 <img 
-                                    src={song.image} 
+                                    src={song.poster} 
                                     alt={song.title} 
                                     className="song-image" 
                                 />
